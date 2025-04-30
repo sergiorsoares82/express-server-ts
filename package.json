@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "tsx src/index.ts",
     "build": "tsc",
+    "start": "node dist/index.js",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "jest",
