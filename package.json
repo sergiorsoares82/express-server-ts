@@ -3,13 +3,17 @@
   "scripts": {
     "dev": "tsx src/index.ts",
     "lint:check": "prettier --check .",
-    "lint:fix": "prettier --write ."
+    "lint:fix": "prettier --write .",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@types/jest": "^29.5.14",
     "express": "^5.1.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
+    "jest": "^29.7.0",
     "prettier": "^3.5.3",
     "tsx": "^4.19.4"
   }
