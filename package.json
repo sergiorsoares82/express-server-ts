@@ -1,12 +1,16 @@
 {
+  "type": "module",
   "scripts": {
-    "dev": "tsx src/index.ts"
+    "dev": "tsx src/index.ts",
+    "lint:check": "prettier --check .",
+    "lint:fix": "prettier --write ."
   },
   "dependencies": {
     "express": "^5.1.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
+    "prettier": "^3.5.3",
     "tsx": "^4.19.4"
   }
 }
