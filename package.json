@@ -2,6 +2,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx src/index.ts",
+    "start": "tsx src/index.ts",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "jest",
