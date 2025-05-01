@@ -12,7 +12,7 @@ describe('GET to /api/v1/status', () => {
     expect(responseBody.dependencies.database).toEqual({
       version: '16.0',
       max_connections: 100,
-      opened_connections: 0,
+      opened_connections: 1,
     });
   });
 });

@@ -3,7 +3,7 @@ import express from 'express';
 import router from './routes/index.js';
 import path from 'path';
 
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV;
 
 // Caminho absoluto do arquivo .env correspondente
 const envFile = path.resolve(process.cwd(), `.env.${env}`);
