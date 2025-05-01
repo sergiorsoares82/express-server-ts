@@ -1,12 +1,14 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "npm run services:up && tsx --watch src/index.ts",
+    "dev": "npm run services:up && NODE_ENV=development tsx --watch src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
     "services:up": "docker compose -f src/infra/compose.yaml up -d",
     "services:stop": "docker compose -f src/infra/compose.yaml stop",
     "services:down": "docker compose -f src/infra/compose.yaml down",
+    "migrations:create": "node-pg-migrate create -m src/infra/migrations",
+    "migrations:up": "node-pg-migrate -m src/infra/migrations up",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "jest",
@@ -16,6 +18,7 @@
     "@types/jest": "^29.5.14",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "node-pg-migrate": "^7.9.1",
     "pg": "^8.15.6"
   },
   "devDependencies": {
