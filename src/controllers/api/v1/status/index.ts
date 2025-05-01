@@ -1,3 +1,5 @@
+import database from '../../../../infra/database.js';
+
 const statusController = (req, res) => {
   res.status(200).json({
     status: 'success',
