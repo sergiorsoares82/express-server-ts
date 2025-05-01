@@ -6,6 +6,7 @@ const query = async (queryObject: any) => {
     port: parseInt(process.env.POSTGRES_PORT),
     user: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
+    ssl: getSSLValues(),
   });
   try {
     await client.connect();
@@ -16,6 +17,10 @@ const query = async (queryObject: any) => {
   } finally {
     await client.end();
   }
+};
+
+const getSSLValues = () => {
+  return process.env.NODE_ENV === 'development' ? false : true;
 };
 
 export default {
