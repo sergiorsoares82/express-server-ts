@@ -5,6 +5,7 @@
     "module": "ESNext",
     "outDir": "./dist",
     "esModuleInterop": true,
+    "baseUrl": "./src",
   },
   "exclude": [
     "tests"
