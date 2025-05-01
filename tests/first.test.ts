@@ -1,3 +1,6 @@
-it('should pass', () => {
-  expect(true).toBe(true);
+describe('GET to /api/v1/status', () => {
+  it('should return 200', async () => {
+    const response = await fetch('http://localhost:3000/api/v1/status');
+    expect(response.status).toBe(200);
+  });
 });
