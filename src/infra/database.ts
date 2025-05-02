@@ -9,7 +9,7 @@ const query = async (queryObject: any) => {
   //   database: process.env.POSTGRES_DB,
   // });
 
-  console.log('Node environment:', process.env.NODE_ENV);
+  // console.log('Node environment:', process.env.NODE_ENV);
 
   const client = new Client({
     host: process.env.POSTGRES_HOST,

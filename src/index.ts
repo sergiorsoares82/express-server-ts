@@ -10,7 +10,7 @@ const envFile = path.resolve(process.cwd(), `.env.${env}`);
 
 dotenv.config({ path: envFile });
 
-console.log(`[env] Loaded ${envFile}`);
+// console.log(`[env] Loaded ${envFile}`);
 
 dotenv.config();
 

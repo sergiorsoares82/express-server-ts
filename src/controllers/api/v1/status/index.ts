@@ -1,10 +1,9 @@
-import database from '../../../../infra/database.js';
+import database from 'infra/database.js';
 
 const statusController = async (req, res) => {
   const updatedAt = new Date().toISOString();
 
   const databaseVersionResult = await database.query('SHOW server_version;');
-  console.log('databaseVersionResult', databaseVersionResult);
   const databaseVersion = databaseVersionResult.rows[0].server_version;
 
   const databaseMaxConnectionsResult = await database.query(
