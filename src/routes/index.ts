@@ -1,6 +1,6 @@
 import express from 'express';
 import statusController from '../controllers/api/v1/status/index.js';
-import migrationsController from 'controllers/api/v1/migrations/index.js';
+import migrationsController from '../controllers/api/v1/migrations/index.js';
 
 const router = express.Router();
 
