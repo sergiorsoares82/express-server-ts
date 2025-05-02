@@ -3,6 +3,7 @@ import { join } from 'path';
 
 const migrationsController = async (req, res) => {
   if (req.method === 'GET') {
+    console.log('Method GET');
     const migrations = await migrationRunner({
       databaseUrl: process.env.DATABASE_URL,
       dryRun: true,
@@ -11,7 +12,7 @@ const migrationsController = async (req, res) => {
       verbose: true,
       migrationsTable: 'pgmigrations',
     });
-    return res.status(200).json([]);
+    return res.status(200).json(migrations);
   }
 
   if (req.method === 'POST') {
@@ -23,7 +24,7 @@ const migrationsController = async (req, res) => {
       verbose: true,
       migrationsTable: 'pgmigrations',
     });
-    return res.status(200).json([]);
+    return res.status(200).json(migrations);
   }
 
   return res.status(405).end();

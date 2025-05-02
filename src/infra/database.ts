@@ -25,13 +25,14 @@ const query = async (queryObject: any) => {
     return result;
   } catch (error) {
     console.error('Database query error:', error);
+    throw error; // Rethrow the error to be handled by the caller
   } finally {
     await client.end();
   }
 };
 
 const getSSLValues = () => {
-  return process.env.NODE_ENV === 'development' ? false : true;
+  return process.env.NODE_ENV === 'production' ? true : false;
 };
 
 export default {
