@@ -1,29 +1,33 @@
-import migrationRunner from 'node-pg-migrate';
+import dotenv from 'dotenv';
+import migrationRunner, { type RunnerOption } from 'node-pg-migrate';
 import { join } from 'path';
 
 const migrationsController = async (req, res) => {
+  const defaultMigrationsOptions: RunnerOption = {
+    databaseUrl: process.env.DATABASE_URL,
+    dir: join('src', 'infra', 'migrations'),
+    direction: 'up',
+    verbose: true,
+    migrationsTable: 'pgmigrations',
+    dryRun: true,
+  };
+
   if (req.method === 'GET') {
-    console.log('Method GET');
     const migrations = await migrationRunner({
-      databaseUrl: process.env.DATABASE_URL,
-      dryRun: true,
-      dir: join('src', 'infra', 'migrations'),
-      direction: 'up',
-      verbose: true,
-      migrationsTable: 'pgmigrations',
+      ...defaultMigrationsOptions,
     });
+
     return res.status(200).json(migrations);
   }
 
   if (req.method === 'POST') {
     const migrations = await migrationRunner({
-      databaseUrl: process.env.DATABASE_URL,
+      ...defaultMigrationsOptions,
       dryRun: false,
-      dir: join('src', 'infra', 'migrations'),
-      direction: 'up',
-      verbose: true,
-      migrationsTable: 'pgmigrations',
     });
+    if (migrations.length > 0) {
+      return res.status(201).json(migrations);
+    }
     return res.status(200).json(migrations);
   }
 
