@@ -12,7 +12,14 @@ router.get('/', (req, res) => {
 });
 
 router.get('/api/v1/status', statusController);
-router.get('/api/v1/migrations', migrationsController);
-router.post('/api/v1/migrations', migrationsController);
+router.all('/api/v1/migrations', migrationsController);
+// router.post('/api/v1/migrations', migrationsController);
+// router.all('/api/v1/migrations*', (req, res) => {
+//   console.log('patch');
+//   res.status(405).json({
+//     error: 'Method Not Allowed',
+//     message: `Method ${req.method} is not allowed. Allowed methods are: GET, POST`,
+//   });
+// });
 
 export default router;
