@@ -1,5 +1,4 @@
-import dotenv from 'dotenv';
-import database from 'infra/database';
+import database from '../../../../infra/database.js';
 import migrationRunner, { type RunnerOption } from 'node-pg-migrate';
 import { join } from 'path';
 

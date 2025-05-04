@@ -1,4 +1,4 @@
-import database from 'infra/database.js';
+import database from '../../../../infra/database.js';
 
 const statusController = async (req, res) => {
   const updatedAt = new Date().toISOString();
