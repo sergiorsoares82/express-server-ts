@@ -1,15 +1,16 @@
 import dotenv from 'dotenv';
+import dotenvExpand from 'dotenv-expand';
 import express from 'express';
 import router from './routes/index.js';
 import path from 'path';
 
-const env = process.env.NODE_ENV;
+const environment = process.env.NODE_ENV;
 
 // Caminho absoluto do arquivo .env correspondente
-const envFile = path.resolve(process.cwd(), `.env.${env}`);
+const envFile = path.resolve(process.cwd(), `.env.${environment}`);
 
-dotenv.config({ path: envFile });
-
+const env = dotenv.config({ path: envFile });
+dotenvExpand.expand(env);
 // console.log(`[env] Loaded ${envFile}`);
 
 dotenv.config();

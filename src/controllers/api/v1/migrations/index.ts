@@ -1,10 +1,12 @@
 import dotenv from 'dotenv';
+import database from 'infra/database';
 import migrationRunner, { type RunnerOption } from 'node-pg-migrate';
 import { join } from 'path';
 
 const migrationsController = async (req, res) => {
+  const dbClient = await database.getNewClient();
   const defaultMigrationsOptions: RunnerOption = {
-    databaseUrl: process.env.DATABASE_URL,
+    dbClient: dbClient,
     dir: join('src', 'infra', 'migrations'),
     direction: 'up',
     verbose: true,
@@ -13,22 +15,26 @@ const migrationsController = async (req, res) => {
   };
 
   if (req.method === 'GET') {
-    const migrations = await migrationRunner({
+    const pendingMigrations = await migrationRunner({
       ...defaultMigrationsOptions,
     });
 
-    return res.status(200).json(migrations);
+    await dbClient.end();
+    return res.status(200).json(pendingMigrations);
   }
 
   if (req.method === 'POST') {
-    const migrations = await migrationRunner({
+    const migratedmigrations = await migrationRunner({
       ...defaultMigrationsOptions,
       dryRun: false,
     });
-    if (migrations.length > 0) {
-      return res.status(201).json(migrations);
+    await dbClient.end();
+
+    if (migratedmigrations.length > 0) {
+      return res.status(201).json(migratedmigrations);
     }
-    return res.status(200).json(migrations);
+
+    return res.status(200).json(migratedmigrations);
   }
 
   return res.status(405).end();
