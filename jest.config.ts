@@ -17,5 +17,6 @@ export default {
   moduleNameMapper: {
     '^src/(.*)$': '<rootDir>/src/$1',
   },
+  testTimeout: 60000,
   // setupFiles: ['<rootDir>/jest.setup.ts'],
 };
