@@ -9,6 +9,7 @@ const waitForAllServices = async () => {
 
     return retry(fetchStatusPage, {
       retry: 100,
+      maxTimeout: 1000,
     });
   };
 
