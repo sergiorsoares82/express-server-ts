@@ -25,6 +25,7 @@
     "pg": "^8.15.6"
   },
   "devDependencies": {
+    "@types/async-retry": "^1.4.9",
     "@types/express": "^5.0.1",
     "@types/pg": "^8.11.14",
     "concurrently": "^9.1.2",
