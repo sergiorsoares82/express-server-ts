@@ -5,9 +5,7 @@
     "module": "ESNext",
     "outDir": "./dist",
     "esModuleInterop": true,
-    "baseUrl": "./src",
+    "baseUrl": "./src"
   },
-  "exclude": [
-    "tests"
-  ]
+  "exclude": ["tests"]
 }
