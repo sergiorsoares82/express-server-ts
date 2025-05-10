@@ -1,4 +1,3 @@
-import { error } from 'console';
 import database from '../../../../infra/database.js';
 import migrationRunner, { type RunnerOption } from 'node-pg-migrate';
 import { join } from 'path';
@@ -14,7 +13,7 @@ const migrationsController = async (req, res) => {
     });
   }
 
-  let dbClient: any;
+  let dbClient;
   try {
     dbClient = await database.getNewClient();
     const defaultMigrationsOptions: RunnerOption = {

@@ -1,6 +1,6 @@
 import { Client } from 'pg';
 
-const query = async (queryObject: any) => {
+const query = async (queryObject: string) => {
   const client = await getNewClient();
 
   try {

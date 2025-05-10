@@ -1,3 +1,3 @@
-export const up = (pgm) => {};
+export const up = () => {};
 
-export const down = (pgm) => {};
+export const down = () => {};

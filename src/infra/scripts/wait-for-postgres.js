@@ -1,7 +1,7 @@
 import { exec } from 'node:child_process';
 
 const checkPostgres = () => {
-  const handleReturn = (error, stdout, stderr) => {
+  const handleReturn = (error, stdout) => {
     if (stdout.search('accepting connections') === -1) {
       process.stdout.write('.');
       checkPostgres();
