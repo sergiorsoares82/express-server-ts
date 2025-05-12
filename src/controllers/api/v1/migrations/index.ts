@@ -18,6 +18,7 @@ const migrationsController = async (req, res) => {
     dbClient = await database.getNewClient();
     const defaultMigrationsOptions: RunnerOption = {
       dbClient: dbClient,
+      // maybe i'll have to change this to a relative path
       dir: join('src', 'infra', 'migrations'),
       direction: 'up',
       verbose: true,
