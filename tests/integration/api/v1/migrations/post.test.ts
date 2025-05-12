@@ -1,11 +1,8 @@
-import database from '../../../../../src/infra/database';
 import orchestrator from '../../../../orchestrator';
-async function cleanDatabase() {
-  await database.query('drop schema public cascade; create schema public;');
-}
+
 describe('POST to /api/v1/migrations', () => {
   beforeAll(async () => {
-    await cleanDatabase();
+    await orchestrator.cleanDatabase();
     await orchestrator.waitForAllServices();
   });
   it('should return 201 for the first post request', async () => {
