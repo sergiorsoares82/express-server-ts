@@ -5,7 +5,7 @@
     "postdev": "npm run services:stop",
     "build": "tsc",
     "posttest": "npm run services:stop",
-    "start": "node dist/index.js",
+    "start": "node dist/src/index.js",
     "test": "npm run services:up && concurrently -n tsx,jest --hide tsx -k -s command-jest \"NODE_ENV=development tsx --watch src/index.ts\" \"jest --runInBand --verbose\"",
     "test:watch": "jest --watchAll --runInBand",
     "services:up": "docker compose -f src/infra/compose.yaml up -d",
