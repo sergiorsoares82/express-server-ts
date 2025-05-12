@@ -1,11 +1,6 @@
 import { Client } from 'pg';
 
-interface QueryObject {
-  text: string;
-  values: string[];
-}
-
-const query = async (queryObject: string | QueryObject) => {
+const query = async (queryObject: string) => {
   const client = await getNewClient();
 
   try {
